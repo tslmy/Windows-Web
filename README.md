@@ -2,6 +2,10 @@
 
 *Disclaimer: not a Microsoft product. lol.*
 
+A OS-like launchpad of my favorite web-apps in HTML.
+
+Consider this a GUI-extension of [Consora](https://github.com/tslmy/consora).
+
 ## Todo List
 
 - [ ] Remove unnecessary code
