@@ -153,11 +153,11 @@ $(function () {
     }
     var browserWindowCount = 0;
 
-    function generateDomForNewBrowserWindow(appName, href, icon, browserWindowID, width, height) {
+    function generateDomForNewBrowserWindow(appName, href, icon, browserWindowID, width, height, color) {
         return `        <div class="window window--browser" data-window="browser` + browserWindowID + `" style="width:`+width+`;height:`+height+`;top:` + browserWindowID * 32 + `px;left:` + browserWindowID * 32 + `px;">
                 <div class="window__titlebar">
                     <div class="window__controls window__controls--left">
-                        <a class="window__icon" href="#"><i class="fa ` + icon + `"></i></a>
+                        <a class="window__icon" href="#" style="background:`+color+`"><i class="fa ` + icon + `"></i></a>
                     </div>
                     <span class="window__title">` + appName + `</span>
 
@@ -189,10 +189,11 @@ $(function () {
         var href = $(this).data('href') || 'about:blank';
         var width = $(this).data('width') || '400px';
         var height = $(this).data('height') || '515px';
+        var color = $(this).data('color') || '#7bb6ef';
         browserWindowCount += 1;
         console.log('Creating window for ', appName, ' that points to ', href, '...');
         //generate dom
-        WindowDomString = generateDomForNewBrowserWindow(appName, href, icon, browserWindowCount, width, height);
+        WindowDomString = generateDomForNewBrowserWindow(appName, href, icon, browserWindowCount, width, height, color);
         TaskbarButtonDomString = generateDomForNewBrowserTaskbarButton(appName, href, icon, browserWindowCount);
         var targetWindow = $(WindowDomString);
         var targetTaskbar = $(TaskbarButtonDomString);

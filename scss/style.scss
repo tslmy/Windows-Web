@@ -524,16 +524,7 @@ a {
 }
 
 .taskbar__item--active {
-    //background-color: rgba(#78909C, 0.25) !important;
-    &.taskbar__item--explorer {
-        background-color: $explorer-color;
-    }
-    &.taskbar__item--mail {
-        background-color: $mail-color;
-    }
-    &.taskbar__item--notepad {
-        background-color: $notepad-color;
-    }
+    background-color: rgba(#78909C, 0.25) !important;
 }
 
 .taskbar__item--open {

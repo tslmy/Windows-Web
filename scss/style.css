@@ -494,34 +494,26 @@ a {
     height: 32px;
     line-height: 32px; }
 
-/* line 528, /Users/lmy/Projects/Windows Web/scss/style.scss */
-.taskbar__item--active.taskbar__item--explorer {
-  background-color: #0097A7; }
+/* line 526, /Users/lmy/Projects/Windows Web/scss/style.scss */
+.taskbar__item--active {
+  background-color: rgba(120, 144, 156, 0.25) !important; }
 
-/* line 531, /Users/lmy/Projects/Windows Web/scss/style.scss */
-.taskbar__item--active.taskbar__item--mail {
-  background-color: #5C6BC0; }
-
-/* line 534, /Users/lmy/Projects/Windows Web/scss/style.scss */
-.taskbar__item--active.taskbar__item--notepad {
-  background-color: #EC407A; }
-
-/* line 539, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 530, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .taskbar__item--open {
   box-shadow: inset 0 -2px 0 rgba(255, 255, 255, 0.35); }
 
-/* line 556, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 547, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .taskbar__item--start {
   color: #378fe7;
   transition: background-color 250ms; }
-  /* line 559, /Users/lmy/Projects/Windows Web/scss/style.scss */
+  /* line 550, /Users/lmy/Projects/Windows Web/scss/style.scss */
   .taskbar__item--start.start--open {
     color: white; }
 
-/* line 564, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 555, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .taskbar__item--cortana {
   width: 150px; }
-  /* line 566, /Users/lmy/Projects/Windows Web/scss/style.scss */
+  /* line 557, /Users/lmy/Projects/Windows Web/scss/style.scss */
   .taskbar__item--cortana input {
     background: none;
     font-size: 14px;
@@ -530,21 +522,21 @@ a {
     color: #ddd;
     width: 100%; }
 
-/* line 576, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 567, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .taskbar__tray {
   color: white;
   padding: 0 10px;
   float: right;
   line-height: 48px; }
-  /* line 581, /Users/lmy/Projects/Windows Web/scss/style.scss */
+  /* line 572, /Users/lmy/Projects/Windows Web/scss/style.scss */
   .taskbar__tray .time {
     cursor: default;
     padding: 5px; }
-    /* line 584, /Users/lmy/Projects/Windows Web/scss/style.scss */
+    /* line 575, /Users/lmy/Projects/Windows Web/scss/style.scss */
     .taskbar__tray .time:hover {
       background-color: rgba(255, 255, 255, 0.1); }
 
-/* line 590, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 581, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .start-menu-fade {
   display: none;
   position: absolute;
@@ -555,7 +547,7 @@ a {
   z-index: 9998;
   background-color: rgba(0, 0, 0, 0.5); }
 
-/* line 601, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 592, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .start-menu {
   display: flex;
   opacity: 0;
@@ -569,54 +561,54 @@ a {
   color: white;
   background-color: #1976D2; }
 
-/* line 618, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 609, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .start--open {
   background-color: #1976D2 !important; }
 
-/* line 623, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 614, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .start-menu__list,
 .start-screen {
   flex: 0 1 auto; }
 
-/* line 627, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 618, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .start-menu__list {
   position: relative;
   width: 248px;
   transform: translate(-100%, 0);
   opacity: 0;
   transition: all 500ms; }
-  /* line 633, /Users/lmy/Projects/Windows Web/scss/style.scss */
+  /* line 624, /Users/lmy/Projects/Windows Web/scss/style.scss */
   .start-menu--open .start-menu__list {
     transform: none;
     opacity: 1; }
 
-/* line 639, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 630, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .user-info {
   display: flex;
   margin-bottom: 10px;
   padding: 10px;
   color: white;
   transition: all 100ms, transform 500ms; }
-  /* line 645, /Users/lmy/Projects/Windows Web/scss/style.scss */
+  /* line 636, /Users/lmy/Projects/Windows Web/scss/style.scss */
   .user-info:hover {
     background-color: rgba(255, 255, 255, 0.15); }
-  /* line 648, /Users/lmy/Projects/Windows Web/scss/style.scss */
+  /* line 639, /Users/lmy/Projects/Windows Web/scss/style.scss */
   .start-menu--open .user-info {
     transform: none; }
 
-/* line 653, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 644, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .user-info__img {
   display: block;
   width: 40px;
   height: 40px; }
 
-/* line 659, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 650, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .user-info__name {
   font-size: 20px;
   font-weight: 200;
   align-self: center; }
 
-/* line 665, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 656, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .user-info__power {
   margin-left: auto;
   width: 60px;
@@ -625,17 +617,17 @@ a {
   text-align: center;
   font-size: 20px;
   color: white; }
-  /* line 674, /Users/lmy/Projects/Windows Web/scss/style.scss */
+  /* line 665, /Users/lmy/Projects/Windows Web/scss/style.scss */
   .user-info__power:hover {
     background-color: rgba(255, 255, 255, 0.15); }
 
-/* line 679, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 670, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .start-menu__label {
   display: block;
   padding: 10px 20px;
   font-size: 20px; }
 
-/* line 686, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 677, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .start-menu__recent {
   overflow: hidden;
   max-height: 65%;
@@ -644,23 +636,23 @@ a {
   transform: translate(-100%, 0);
   opacity: 0;
   transition: all 500ms 100ms, opacity 1000ms 250ms; }
-  /* line 695, /Users/lmy/Projects/Windows Web/scss/style.scss */
+  /* line 686, /Users/lmy/Projects/Windows Web/scss/style.scss */
   .start-menu--open .start-menu__recent {
     transform: none;
     opacity: 1; }
-  /* line 699, /Users/lmy/Projects/Windows Web/scss/style.scss */
+  /* line 690, /Users/lmy/Projects/Windows Web/scss/style.scss */
   .start-menu__recent li {
     list-style: none; }
-    /* line 701, /Users/lmy/Projects/Windows Web/scss/style.scss */
+    /* line 692, /Users/lmy/Projects/Windows Web/scss/style.scss */
     .start-menu__recent li a {
       display: block;
       padding: 10px;
       color: white;
       transition: all 100ms; }
-      /* line 706, /Users/lmy/Projects/Windows Web/scss/style.scss */
+      /* line 697, /Users/lmy/Projects/Windows Web/scss/style.scss */
       .start-menu__recent li a:hover {
         background-color: rgba(255, 255, 255, 0.15); }
-      /* line 713, /Users/lmy/Projects/Windows Web/scss/style.scss */
+      /* line 704, /Users/lmy/Projects/Windows Web/scss/style.scss */
       .start-menu__recent li a > i {
         display: inline-block;
         width: 32px;
@@ -670,17 +662,17 @@ a {
         line-height: 32px;
         text-align: center;
         box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15); }
-    /* line 724, /Users/lmy/Projects/Windows Web/scss/style.scss */
+    /* line 715, /Users/lmy/Projects/Windows Web/scss/style.scss */
     .start-menu__recent li.start-menu__explorer a > i {
       background-color: #0097A7; }
-    /* line 728, /Users/lmy/Projects/Windows Web/scss/style.scss */
+    /* line 719, /Users/lmy/Projects/Windows Web/scss/style.scss */
     .start-menu__recent li.start-menu__mail a > i {
       background-color: #5C6BC0; }
-    /* line 732, /Users/lmy/Projects/Windows Web/scss/style.scss */
+    /* line 723, /Users/lmy/Projects/Windows Web/scss/style.scss */
     .start-menu__recent li.start-menu__notepad a > i {
       background-color: #EC407A; }
 
-/* line 739, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 730, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .all-apps {
   position: absolute;
   right: 0;
@@ -689,7 +681,7 @@ a {
   margin-bottom: 10px;
   color: white;
   transition: all 100ms; }
-  /* line 748, /Users/lmy/Projects/Windows Web/scss/style.scss */
+  /* line 739, /Users/lmy/Projects/Windows Web/scss/style.scss */
   .all-apps > i {
     margin-left: 5px;
     margin-right: 5px;
@@ -699,11 +691,11 @@ a {
     height: 32px;
     line-height: 26px;
     text-align: center; }
-  /* line 759, /Users/lmy/Projects/Windows Web/scss/style.scss */
+  /* line 750, /Users/lmy/Projects/Windows Web/scss/style.scss */
   .all-apps:hover > i {
     background-color: #37474F; }
 
-/* line 765, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 756, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .search {
   position: absolute;
   bottom: 0;
@@ -711,7 +703,7 @@ a {
   height: 36px;
   background-color: white; }
 
-/* line 773, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 764, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .search__input {
   display: block;
   width: 100%;
@@ -726,7 +718,7 @@ a {
   -moz-appearance: none;
   appearance: none; }
 
-/* line 788, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 779, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .search__btn {
   position: absolute;
   right: 0;
@@ -739,7 +731,7 @@ a {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none; }
-  /* line 800, /Users/lmy/Projects/Windows Web/scss/style.scss */
+  /* line 791, /Users/lmy/Projects/Windows Web/scss/style.scss */
   .search__btn:before {
     display: block;
     content: '\f002';
@@ -747,7 +739,7 @@ a {
     font-size: 12px;
     color: #607D8B; }
 
-/* line 809, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 800, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .start-screen-scroll {
   max-height: 85vh;
   min-height: calc(128px * 3 - 8px);
@@ -759,30 +751,30 @@ a {
   transform: translate(-100%, 0);
   transition: transform 500ms, opacity 1000ms;
   opacity: 0; }
-  /* line 820, /Users/lmy/Projects/Windows Web/scss/style.scss */
+  /* line 811, /Users/lmy/Projects/Windows Web/scss/style.scss */
   .start-menu--open .start-screen-scroll {
     transform: none;
     opacity: 1; }
 
-/* line 826, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 817, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .start-screen {
   position: relative;
   width: 256px;
   word-spacing: -1em; }
   @media screen and (min-width: 700px) {
-    /* line 826, /Users/lmy/Projects/Windows Web/scss/style.scss */
+    /* line 817, /Users/lmy/Projects/Windows Web/scss/style.scss */
     .start-screen {
       min-width: 384px; } }
   @media screen and (min-width: 800px) {
-    /* line 826, /Users/lmy/Projects/Windows Web/scss/style.scss */
+    /* line 817, /Users/lmy/Projects/Windows Web/scss/style.scss */
     .start-screen {
       min-width: 512px; } }
   @media screen and (min-width: 960px) {
-    /* line 826, /Users/lmy/Projects/Windows Web/scss/style.scss */
+    /* line 817, /Users/lmy/Projects/Windows Web/scss/style.scss */
     .start-screen {
       min-width: 640px; } }
 
-/* line 842, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 833, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .start-screen__tile {
   position: relative;
   display: block;
@@ -796,20 +788,20 @@ a {
   border: 2px solid rgba(255, 255, 255, 0.1);
   transform: scale(0.5);
   transition: all 250ms, transform 0s; }
-  /* line 856, /Users/lmy/Projects/Windows Web/scss/style.scss */
+  /* line 847, /Users/lmy/Projects/Windows Web/scss/style.scss */
   .start-menu--open .start-screen__tile {
     transform: none; }
-  /* line 859, /Users/lmy/Projects/Windows Web/scss/style.scss */
+  /* line 850, /Users/lmy/Projects/Windows Web/scss/style.scss */
   .start-screen__tile.ui-sortable-helper {
     transform: scale(1.1);
     transition: none; }
-  /* line 863, /Users/lmy/Projects/Windows Web/scss/style.scss */
+  /* line 854, /Users/lmy/Projects/Windows Web/scss/style.scss */
   .start-screen__tile:hover {
     border-color: rgba(255, 255, 255, 0.5); }
-  /* line 867, /Users/lmy/Projects/Windows Web/scss/style.scss */
+  /* line 858, /Users/lmy/Projects/Windows Web/scss/style.scss */
   .start-screen__tile:active {
     transform: scale(0.9); }
-  /* line 870, /Users/lmy/Projects/Windows Web/scss/style.scss */
+  /* line 861, /Users/lmy/Projects/Windows Web/scss/style.scss */
   .start-screen__tile > i {
     font-size: 48px;
     position: absolute;
@@ -817,53 +809,53 @@ a {
     left: 50%;
     margin-top: -24px;
     margin-left: -24px; }
-  /* line 878, /Users/lmy/Projects/Windows Web/scss/style.scss */
+  /* line 869, /Users/lmy/Projects/Windows Web/scss/style.scss */
   .start-screen__tile > span {
     position: absolute;
     left: 12px;
     bottom: 4px;
     font-size: 12px; }
 
-/* line 887, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 878, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .start-screen__tile--wide,
 .start-screen__tile--large {
   width: 248px; }
 
-/* line 891, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 882, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .start-screen__tile--large {
   height: 248px; }
 
-/* line 895, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 886, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .start-screen__tile--small {
   width: 56px;
   height: 56px; }
 
-/* line 900, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 891, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .start-screen__smallgroup {
   width: 120px;
   height: 120px;
   margin: 4px; }
-  /* line 906, /Users/lmy/Projects/Windows Web/scss/style.scss */
+  /* line 897, /Users/lmy/Projects/Windows Web/scss/style.scss */
   .start-screen__smallgroup > .start-screen__tile {
     margin: 0; }
-    /* line 908, /Users/lmy/Projects/Windows Web/scss/style.scss */
+    /* line 899, /Users/lmy/Projects/Windows Web/scss/style.scss */
     .start-screen__smallgroup > .start-screen__tile:nth-child(odd) {
       margin-right: 8px;
       margin-bottom: 8px; }
 
-/* line 915, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 906, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .start-screen__tile--explorer {
   background-color: #0097A7; }
 
-/* line 919, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 910, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .start-screen__tile--mail {
   background-color: #5C6BC0; }
 
-/* line 923, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 914, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .start-screen__tile--notepad {
   background-color: #EC407A; }
 
-/* line 927, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 918, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .full-textarea {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -873,7 +865,7 @@ a {
   width: 100%;
   height: 100%; }
 
-/* line 937, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 928, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .full-iframe {
   border: 0;
   width: 100%;
@@ -883,26 +875,26 @@ a {
   position: absolute;
   overflow: hidden; }
 
-/* line 947, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 938, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .ui-resizable-se {
   background-image: url(""); }
 
-/* line 951, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 942, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .menu-toggle {
   position: relative; }
 
-/* line 955, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 946, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .menu-toggle--open {
   background-color: rgba(0, 0, 0, 0.1); }
 
-/* line 959, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 950, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .menu {
   position: absolute;
   z-index: 10000;
   background: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   transition: all 250ms; }
-  /* line 966, /Users/lmy/Projects/Windows Web/scss/style.scss */
+  /* line 957, /Users/lmy/Projects/Windows Web/scss/style.scss */
   .menu > a {
     display: block;
     width: 200px;
@@ -910,11 +902,11 @@ a {
     font-size: 16px;
     color: #455A64;
     transition: all 100ms; }
-    /* line 973, /Users/lmy/Projects/Windows Web/scss/style.scss */
+    /* line 964, /Users/lmy/Projects/Windows Web/scss/style.scss */
     .menu > a:hover {
       background-color: #ECEFF1; }
 
-/* line 981, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 972, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .folders > a {
   display: inline-block;
   padding: 10px;
@@ -925,16 +917,16 @@ a {
   border: 1px solid transparent;
   color: #607D8B;
   cursor: pointer; }
-  /* line 991, /Users/lmy/Projects/Windows Web/scss/style.scss */
+  /* line 982, /Users/lmy/Projects/Windows Web/scss/style.scss */
   .folders > a:hover {
     color: #1976D2;
     border-color: rgba(0, 0, 0, 0.1);
     background-color: rgba(236, 239, 241, 0.5); }
-  /* line 996, /Users/lmy/Projects/Windows Web/scss/style.scss */
+  /* line 987, /Users/lmy/Projects/Windows Web/scss/style.scss */
   .folders > a > i {
     display: block;
     font-size: 32px; }
-  /* line 1000, /Users/lmy/Projects/Windows Web/scss/style.scss */
+  /* line 991, /Users/lmy/Projects/Windows Web/scss/style.scss */
   .folders > a > span {
     display: block; }
 
