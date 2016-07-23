@@ -8,13 +8,14 @@ Consider this a GUI-extension of [Consora](https://github.com/tslmy/consora).
 
 ## Todo List
 
-- [ ] Remove unnecessary code
-- [ ] Write a universal way to create a window
-      - [ ] create window on the desktop
-      - [ ] create a corresponding button on the taskbar
-- [ ] Change start menu into a list of my favorite web apps
+- [x] Remove unnecessary code
+- [x] Write a universal way to create a window
+      - [x] create window on the desktop
+      - [x] create a corresponding button on the taskbar
+- [x] Change start menu into a list of my favorite web apps
 - [ ] make a Cortana-like quck start bar
       - [ ] make it default focus on load
+
 
 Work Adapted from:
 ------------------
