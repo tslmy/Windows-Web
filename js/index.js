@@ -69,13 +69,6 @@ $(function () {
                 initialWidth = $(this).width(),
                 initialTop = $(this).position().top,
                 initialLeft = $(this).position().left;
-            //re-register!
-                var targetWindow = $(this);
-                var thisTitlebar = $('.window__titlebar',targetWindow);
-                targetWindow.click(windowClickHandler);
-                thisTitlebar.click(function(){console.log('Clicked on titlebar.')});
-                targetWindow.click(function(){console.log('Clicked on window.')});
-                $('a', thisTitlebar).click(function(){console.log('Clicked on window controls.')});
         },
         start: function (event, ui) {
             console.log('Drag started.');
