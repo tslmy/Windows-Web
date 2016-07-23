@@ -5,7 +5,7 @@ $(window).load(function () {
         itemSelector: '.masonry-item',
         columnWidth: 128
     });
-
+    
     /*$container.sortable({
       items: '.start-screen__tile',
       start: function(e, ui) {
@@ -26,7 +26,8 @@ $(window).load(function () {
     });
     $container.disableSelection();*/
 
-
+    //FastClick.attach(document.body);
+    
     $('.start-menu').hide().css('opacity', 1);
 });
 
