@@ -6,21 +6,23 @@ $(function () {
         columnWidth: 128
     });
     FastClick.attach(document.body);
-    $('body').on('touchmove', function(e) {
+    $('body').on('touchmove', function (e) {
         // this is the node the touchmove event fired on
-        if ($(e.target).hasClass('window__titlebar')){
+        if ($(e.target).hasClass('window__titlebar')) {
             // ignore as we want the scroll to happen
         } else {
             e.preventDefault();
         }
     });
-    
+
     $('.start-menu').hide().css('opacity', 1);
-    $('.taskbar').sortable({axis: "x"});
+    $('.taskbar').sortable({
+        axis: "x"
+    });
 
     $('.menu-toggle').each(menuToggleInitiator);
-    
-    
+
+
     var zIndex = 1;
 
     var fullHeight = $(window).height() - 48,
@@ -32,7 +34,7 @@ $(function () {
     });
 
 
-    function windowClickHandler (e) {
+    function windowClickHandler(e) {
         if (!$(this).is('.window--active')) {
             $('.window').removeClass('window--active');
         }
@@ -41,7 +43,7 @@ $(function () {
         $(this).css({
             'z-index': zIndex++
         });
-        
+
         var appName = $(this).data('window');
         var targetTaskbar = $('.taskbar__item[data-window="' + appName + '"]');
 
@@ -51,7 +53,7 @@ $(function () {
 
         }
     };
-    
+
     var resizablePlugin_configurations = {
         handles: 'n,ne,e,se,s,sw,w,nw',
         stop: function () {
@@ -150,13 +152,14 @@ $(function () {
         }
     }
     var browserWindowCount = 0;
+
     function generateDomForNewBrowserWindow(appName, href, icon, browserWindowID) {
-        return `        <div class="window window--browser" data-window="browser`+browserWindowID+`" style="width:400px;height:515px;top:`+browserWindowID*32+`px;left:`+browserWindowID*32+`px;">
+        return `        <div class="window window--browser" data-window="browser` + browserWindowID + `" style="width:400px;height:515px;top:` + browserWindowID * 32 + `px;left:` + browserWindowID * 32 + `px;">
                 <div class="window__titlebar">
                     <div class="window__controls window__controls--left">
-                        <a class="window__icon" href="#"><i class="fa `+icon+`"></i></a>
+                        <a class="window__icon" href="#"><i class="fa ` + icon + `"></i></a>
                     </div>
-                    <span class="window__title">`+appName+`</span>
+                    <span class="window__title">` + appName + `</span>
 
                 </div>
                     <div class="window__controls window__controls--right">
@@ -166,17 +169,18 @@ $(function () {
                     </div>
                 <div class="window__body">
                     <div class="window__main">
-                        <iframe class="full-iframe" src="`+href+`"></iframe>
+                        <iframe class="full-iframe" src="` + href + `"></iframe>
                     </div>
                 </div>
             </div>`;
     };
+
     function generateDomForNewBrowserTaskbarButton(appName, href, icon, browserWindowID) {
-        return `<a class="taskbar__item taskbar__item--open taskbar__item--browser" href="#" data-window="browser`+browserWindowID+`">
-                <i class="fa `+icon+`"></i>
+        return `<a class="taskbar__item taskbar__item--open taskbar__item--browser" href="#" data-window="browser` + browserWindowID + `">
+                <i class="fa ` + icon + `"></i>
             </a>`;
     };
-                
+
     function openAppNewWindow(e) {
         e.preventDefault();
         //get usable parameters
@@ -205,10 +209,18 @@ $(function () {
         thisTitlebar.each(initialize_a_titlebar);
         thisTitlebar.mouseup(tiltingHandler);
         //event listeners for debugging:
-        targetTaskbar.click(function(){console.log('Clicked on taskbar button.')});
-        thisTitlebar.click(function(){console.log('Clicked on titlebar.')});
-        targetWindow.click(function(){console.log('Clicked on window.')});
-        $('a', thisTitlebar).click(function(){console.log('Clicked on window controls.')});
+        targetTaskbar.click(function () {
+            console.log('Clicked on taskbar button.')
+        });
+        thisTitlebar.click(function () {
+            console.log('Clicked on titlebar.')
+        });
+        targetWindow.click(function () {
+            console.log('Clicked on window.')
+        });
+        $('a', thisTitlebar).click(function () {
+            console.log('Clicked on window controls.')
+        });
         //TODO
     }
 
@@ -219,7 +231,7 @@ $(function () {
 
 
 
-function initialize_a_titlebar() {
+    function initialize_a_titlebar() {
         var parentWindow = $(this).closest('.window');
 
         $(this).find('a').click(function (e) {
@@ -292,7 +304,7 @@ function initialize_a_titlebar() {
         });
     };
 
-    function tiltingHandler (e) {
+    function tiltingHandler(e) {
         var parentWindow = $(this).closest('.window');
         var pos_top = $(parentWindow).offset().top;
         var pos_left = $(parentWindow).offset().left;
@@ -311,7 +323,7 @@ function initialize_a_titlebar() {
                 'top': 0,
                 'left': 0
             });
-        } else if (pos_left < -$(parentWindow).width()/2) {
+        } else if (pos_left < -$(parentWindow).width() / 2) {
             //alert('at left')
             $(parentWindow).addClass('window--maximized')
             initialHeight = $(parentWindow).height();
@@ -321,11 +333,11 @@ function initialize_a_titlebar() {
 
             $(parentWindow).css({
                 'height': fullHeight,
-                'width': fullWidth/2,
+                'width': fullWidth / 2,
                 'top': 0,
                 'left': 0
             });
-        } else if (pos_left > fullWidth-$(parentWindow).width()/2) {
+        } else if (pos_left > fullWidth - $(parentWindow).width() / 2) {
             //alert('at right')
             $(parentWindow).addClass('window--maximized');
             initialHeight = $(parentWindow).height();
@@ -335,9 +347,9 @@ function initialize_a_titlebar() {
 
             $(parentWindow).css({
                 'height': fullHeight,
-                'width': fullWidth/2,
+                'width': fullWidth / 2,
                 'top': 0,
-                'left': fullWidth/2
+                'left': fullWidth / 2
             });
         }
 
@@ -473,7 +485,7 @@ $(function () {
     $('.time').html(curr_hour + ':' + curr_min + ' ' + a_p);
 });
 
-function menuToggleInitiator () {
+function menuToggleInitiator() {
     var menuName = $(this).data('menu');
     var menu = $('.menu[data-menu="' + menuName + '"]');
     var pos = $(this).position();
