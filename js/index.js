@@ -153,8 +153,8 @@ $(function () {
     }
     var browserWindowCount = 0;
 
-    function generateDomForNewBrowserWindow(appName, href, icon, browserWindowID) {
-        return `        <div class="window window--browser" data-window="browser` + browserWindowID + `" style="width:400px;height:515px;top:` + browserWindowID * 32 + `px;left:` + browserWindowID * 32 + `px;">
+    function generateDomForNewBrowserWindow(appName, href, icon, browserWindowID, width, height) {
+        return `        <div class="window window--browser" data-window="browser` + browserWindowID + `" style="width:`+width+`;height:`+height+`;top:` + browserWindowID * 32 + `px;left:` + browserWindowID * 32 + `px;">
                 <div class="window__titlebar">
                     <div class="window__controls window__controls--left">
                         <a class="window__icon" href="#"><i class="fa ` + icon + `"></i></a>
@@ -184,13 +184,15 @@ $(function () {
     function openAppNewWindow(e) {
         e.preventDefault();
         //get usable parameters
-        var appName = $(this).data('appname');
-        var icon = $(this).data('icon');
-        var href = $(this).data('href');
+        var appName = $(this).data('appname') || 'Untitled';
+        var icon = $(this).data('icon') || 'fa-cube';
+        var href = $(this).data('href') || 'about:blank';
+        var width = $(this).data('width') || '400px';
+        var height = $(this).data('height') || '515px';
         browserWindowCount += 1;
         console.log('Creating window for ', appName, ' that points to ', href, '...');
         //generate dom
-        WindowDomString = generateDomForNewBrowserWindow(appName, href, icon, browserWindowCount);
+        WindowDomString = generateDomForNewBrowserWindow(appName, href, icon, browserWindowCount, width, height);
         TaskbarButtonDomString = generateDomForNewBrowserTaskbarButton(appName, href, icon, browserWindowCount);
         var targetWindow = $(WindowDomString);
         var targetTaskbar = $(TaskbarButtonDomString);
