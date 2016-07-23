@@ -251,48 +251,9 @@ $(function () {
         targetWindow.draggable(draggablePlugin_configurations);
         var thisTitlebar = $('.window__titlebar', targetWindow);
         thisTitlebar.each(initialize_a_titlebar);
-        thisTitlebar.mouseup(titlebarButtonMouseUpEventHandler);
-        thisTitlebar.click();
+        thisTitlebar.mouseup(tiltingHandler);
+        targetWindow.click();
         //TODO
-        /*if (targetWindow.is(':visible')) {
-            if (targetWindow.hasClass('window--active')) {
-                $(targetWindow).toggleClass('window--minimized');
-
-                if (!targetWindow.hasClass('window--minimized')) {
-                    var initialHeight = $(targetWindow).height(),
-                        initialWidth = $(targetWindow).width(),
-                        initialTop = $(targetWindow).position().top,
-                        initialLeft = $(targetWindow).position().left;
-
-                    $('.window').removeClass('window--active');
-
-                    $(targetWindow).addClass('window--active').css({
-                        'z-index': zIndex++
-                    });
-
-                    $(targetTaskbar).addClass('taskbar__item--active');
-                }
-            } else {
-                $('.window').removeClass('window--active');
-                $(targetWindow).addClass('window--active').removeClass('window--minimized').css({
-                    'z-index': zIndex++
-                });
-
-                $(targetTaskbar).addClass('taskbar__item--active');
-            }
-        } else {
-            $('.window').removeClass('window--active');
-
-            $('.window[data-window="' + appName + '"]').css({
-                'z-index': zIndex++
-            }).addClass('window--active').show();
-
-            setTimeout(function () {
-                $('.window[data-window="' + appName + '"]').removeClass('window--opening');
-            }, 500);
-
-            $(targetTaskbar).addClass('taskbar__item--active').addClass('taskbar__item--open');
-        }*/
     }
 
     $('.taskbar__item').click(openApp);
@@ -377,9 +338,9 @@ function initialize_a_titlebar() {
 
     function tiltingHandler (e) {
         var parentWindow = $(this).closest('.window');
-        var pos = $(parentWindow).offset().top;
-
-        if (pos < -5) {
+        var pos_top = $(parentWindow).offset().top;
+        var pos_left = $(parentWindow).offset().left;
+        if (pos_top < -5) {
             //alert('at top')
             $(parentWindow).addClass('window--maximized');
 
@@ -394,13 +355,9 @@ function initialize_a_titlebar() {
                 'top': 0,
                 'left': 0
             });
-        }
-        
-        var pos = $(parentWindow).offset().left;
-
-        if (pos < -5) {
+        } else if (pos_left < -5) {
             //alert('at left')
-
+            $(parentWindow).addClass('window--maximized')
             initialHeight = $(parentWindow).height();
             initialWidth = $(parentWindow).width();
             initialTop = $(parentWindow).position().top;
@@ -411,6 +368,20 @@ function initialize_a_titlebar() {
                 'width': fullWidth/2,
                 'top': 0,
                 'left': 0
+            });
+        } else if (pos_left > fullWidth-5-$(parentWindow).width()) {
+            //alert('at right')
+            $(parentWindow).addClass('window--maximized');
+            initialHeight = $(parentWindow).height();
+            initialWidth = $(parentWindow).width();
+            initialTop = $(parentWindow).position().top;
+            initialLeft = $(parentWindow).position().left;
+
+            $(parentWindow).css({
+                'height': fullHeight,
+                'width': fullWidth/2,
+                'top': 0,
+                'left': fullWidth/2
             });
         }
 
