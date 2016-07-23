@@ -249,7 +249,9 @@ $(function () {
         targetTaskbar.click(openApp);
         targetWindow.resizable(resizablePlugin_configurations);
         targetWindow.draggable(draggablePlugin_configurations);
-        $('.window__titlebar', targetWindow).each(initialize_a_titlebar);
+        var thisTitlebar = $('.window__titlebar', targetWindow);
+        thisTitlebar.each(initialize_a_titlebar);
+        thisTitlebar.mouseup(titlebarButtonMouseUpEventHandler);
         //TODO
         /*if (targetWindow.is(':visible')) {
             if (targetWindow.hasClass('window--active')) {
@@ -316,6 +318,7 @@ function initialize_a_titlebar() {
         });
 
         $(this).find('.window__close').click(function (e) {
+            console.log('Close window');
             $(parentWindow).addClass('window--closing');
 
             setTimeout(function () {
@@ -371,9 +374,7 @@ function initialize_a_titlebar() {
         });
     };
 
-    $('.window__titlebar').each(initialize_a_titlebar);
-
-    $('.window__titlebar').mouseup(function (e) {
+    function titlebarButtonMouseUpEventHandler (e) {
         var parentWindow = $(this).closest('.window');
         var pos = $(parentWindow).offset().top;
 
@@ -394,7 +395,11 @@ function initialize_a_titlebar() {
             });
         }
 
-    });
+    };
+    
+    $('.window__titlebar').each(initialize_a_titlebar);
+
+    $('.window__titlebar').mouseup(titlebarButtonMouseUpEventHandler);
 });
 
 
