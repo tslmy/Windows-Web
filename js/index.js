@@ -37,6 +37,7 @@ $(window).load(function () {
         }
     });
     $('.start-menu').hide().css('opacity', 1);
+    $('.taskbar').sortable();
 });
 
 $(function () {
