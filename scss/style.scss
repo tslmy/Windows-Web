@@ -74,6 +74,9 @@ a {
   transition: all 250ms,
               z-index 1ms;
   z-index: 0;
+  min-width:200px;
+  min-height:200px;
+
   &.ui-draggable-dragging,
   &.ui-resizable-resizing {
     transition: none;
@@ -141,6 +144,7 @@ a {
   line-height: 32px;
   z-index: 10;
   color: rgba(black, 0.75);
+    overflow: hidden;
   //text-shadow: 0 0 7px white;
 }
 
