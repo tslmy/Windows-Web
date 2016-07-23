@@ -5,7 +5,16 @@
 /* line 11, /Users/lmy/Projects/Windows Web/scss/style.scss */
 body {
   overflow: hidden;
-  font-family: 'Segoe UI', sans-serif; }
+  font-family: 'Segoe UI', sans-serif; 
+
+-webkit-user-select: none; /* Chrome/Safari */        
+-moz-user-select: none; /* Firefox */
+-ms-user-select: none; /* IE10+ */
+
+/* Rules below not implemented in browsers yet */
+-o-user-select: none;
+user-select: none;
+}
 
 /* line 16, /Users/lmy/Projects/Windows Web/scss/style.scss */
 a {
