@@ -500,7 +500,7 @@ function menuToggleInitiator () {
 };
 
 //close menu that is not clicked upon upon any click:
-$(document).click(function (e) {
+$(document).mouseup(function (e) {
     if ($('.menu').has(e.target).length === 0 && !$('.menu-toggle').is(e.target) && $('.menu-toggle').has(e.target).length === 0) {
         $('.menu').hide();
     }
