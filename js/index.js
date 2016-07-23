@@ -399,8 +399,7 @@ function initialize_a_titlebar() {
     };
     
     $('.window__titlebar').each(initialize_a_titlebar);
-
-    $('.window__titlebar').mouseup(titlebarButtonMouseUpEventHandler);
+    $('.window__titlebar').pointerup(titlebarButtonMouseUpEventHandler);
 });
 
 
