@@ -317,7 +317,6 @@ a {
 
 /* line 335, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .window__main {
-  padding: 10px;
   width: 100%;
   background-color: white; }
 
@@ -860,7 +859,7 @@ a {
 
 /* line 902, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .full-iframe {
-  border: none;
+  border: 0;
   width: 100%;
   height: 100%;
   padding: 0;
