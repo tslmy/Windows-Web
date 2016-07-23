@@ -5,7 +5,7 @@ $(function () {
         itemSelector: '.masonry-item',
         columnWidth: 128
     });
-    
+    FastClick.attach(document.body);
     $('body').on('touchmove', function(e) {
         // this is the node the touchmove event fired on
         if ($(e.target).hasClass('window__titlebar')){
