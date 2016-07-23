@@ -30,14 +30,7 @@ $(window).load(function () {
     
     $('body').on('touchmove', function(e) {
         // this is the node the touchmove event fired on
-        target = e.target;
-
-        // we need to find the parent container
-        // we get it like so; assumes div as parent
-        parent = $(e.target).closest('div');
-
-        // check if the parent is a scroll window by class //
-        if ($(parent).hasClass('window__titlebar')){
+        if ($(e.target).hasClass('window__titlebar')){
             // ignore as we want the scroll to happen
         } else {
             e.preventDefault();
