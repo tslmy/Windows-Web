@@ -42,9 +42,6 @@ $(function () {
             'z-index': zIndex++
         });
         
-        $('.window__titlebar > .window__controls > a', this).css({
-                'z-index': zIndex++
-            });
         var appName = $(this).data('window');
         var targetTaskbar = $('.taskbar__item[data-window="' + appName + '"]');
 
@@ -167,13 +164,13 @@ $(function () {
                         <a class="window__icon" href="#"><i class="fa `+icon+`"></i></a>
                     </div>
                     <span class="window__title">`+appName+`</span>
+
+                </div>
                     <div class="window__controls window__controls--right">
                         <a class="window__minimize" href="#"><i class="fa fa-minus"></i></a>
                         <a class="window__maximize" href="#"><i class="fa"></i></a>
                         <a class="window__close" href="#"><i class="fa fa-close"></i></a>
                     </div>
-                </div>
-
                 <div class="window__body">
                     <div class="window__main">
                         <iframe class="full-iframe" src="`+href+`"></iframe>
@@ -245,7 +242,7 @@ function initialize_a_titlebar() {
             $(this).toggleClass('window__menutoggle--open');
         });
 
-        $(this).find('.window__close').click(function (e) {
+        $(parentWindow).find('.window__close').click(function (e) {
             console.log('Close window');
             $(parentWindow).addClass('window--closing');
 
@@ -264,7 +261,7 @@ function initialize_a_titlebar() {
             $(closest).addClass('window--active');
         });
 
-        $(this).find('.window__minimize').click(function (e) {
+        $(parentWindow).find('.window__minimize').click(function (e) {
             $(parentWindow).addClass('window--minimized');
 
             var appName = $(parentWindow).data('window');
@@ -275,7 +272,7 @@ function initialize_a_titlebar() {
 
         });
 
-        $(this).find('.window__maximize').click(function (e) {
+        $(parentWindow).find('.window__maximize').click(function (e) {
 
             $(parentWindow).toggleClass('window--maximized');
 

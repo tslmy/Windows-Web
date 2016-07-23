@@ -164,6 +164,7 @@ a {
     transition: all 100ms;
     cursor: default;
     color: rgba(black, 0.5);
+      text-align: center;
     &:hover {
       background-color: rgba(white, 0.25);
     }
