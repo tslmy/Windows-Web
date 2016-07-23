@@ -50,8 +50,7 @@ a {
   transform: translate3d(0,0,0);
 }
 
-.desktop,
-.window__titlebar:after {
+.desktop {
   background-image: url(http://i.imgur.com/K7ZTvoQ.png);
   background-size: cover;
   background-position: 50%;
@@ -60,6 +59,7 @@ a {
 
 .window {
   //overflow: hidden;
+    pointer-events: none;
   position: absolute;
   top: 0;
   right: 0;
@@ -117,6 +117,7 @@ a {
 }
 
 .window__titlebar {
+  pointer-events: auto;
   position: absolute;
   overflow: hidden;
   text-align: center;
@@ -252,6 +253,7 @@ a {
 
 
 .window__menu {
+    pointer-events: auto;
   overflow: hidden;
   display: none;
   position: absolute;
@@ -323,6 +325,7 @@ a {
   flex: 0 1 auto;
   //height: 100%;
   overflow: auto;
+    pointer-events: auto;
 }
 .window__side {
   //flex: 1 1 auto;

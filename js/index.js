@@ -36,6 +36,7 @@ $(window).load(function () {
             e.preventDefault();
         }
     });
+    
     $('.start-menu').hide().css('opacity', 1);
     $('.taskbar').sortable({axis: "x"});
 });
@@ -93,7 +94,10 @@ $(function () {
         $(this).css({
             'z-index': zIndex++
         });
-
+        
+        $('.window__titlebar > .window__controls > a', this).css({
+                'z-index': zIndex++
+            });
         var appName = $(this).data('window');
         var targetTaskbar = $('.taskbar__item[data-window="' + appName + '"]');
 
@@ -252,6 +256,9 @@ $(function () {
         var thisTitlebar = $('.window__titlebar', targetWindow);
         thisTitlebar.each(initialize_a_titlebar);
         thisTitlebar.mouseup(tiltingHandler);
+        thisTitlebar.click(function(){
+            console.log('clicked')
+        })
         targetWindow.click();
         //TODO
     }
