@@ -108,8 +108,9 @@ $(function () {
             $(targetTaskbar).addClass('taskbar__item--active');
         }
     };
+    $('.window').resizable(resizablePlugin_configurations);
+    $('.window').draggable(draggablePlugin_configurations);
 
-    
     function openApp(e) {
         var appName = $(this).data('window');
         var targetWindow = $('.window[data-window="' + appName + '"]');
@@ -209,8 +210,7 @@ $(function () {
         targetWindow.click(windowClickHandler);
         targetWindow.click();
         targetWindow.resizable(resizablePlugin_configurations);
-        //targetWindow.draggable(draggablePlugin_configurations);
-        Draggable.create(targetWindow, {type:"x,y"});
+        targetWindow.draggable(draggablePlugin_configurations);
         var thisTitlebar = $('.window__titlebar', targetWindow);
         thisTitlebar.each(initialize_a_titlebar);
         thisTitlebar.mouseup(tiltingHandler);
@@ -363,8 +363,6 @@ $(function () {
         $('.taskbar__item[data-window="' + appName + '"]').addClass('taskbar__item--active');
     });
     
-    $('.window').resizable(resizablePlugin_configurations);
-    $('.window').draggable(draggablePlugin_configurations);
     $('.window__titlebar').each(initialize_a_titlebar);
    $('.window').click(windowClickHandler); $('.window__titlebar').mouseup(titlebarButtonMouseUpEventHandler); */
 });
