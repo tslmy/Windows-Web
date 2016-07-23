@@ -1,32 +1,10 @@
-$(window).load(function () {
+$(function () {
     var $container = $('.start-screen');
 
     $container.masonry({
         itemSelector: '.masonry-item',
         columnWidth: 128
     });
-    
-    /*$container.sortable({
-      items: '.start-screen__tile',
-      start: function(e, ui) {
-        ui.item.removeClass('masonry-item');
-        $container.masonry('reloadItems');
-        
-        console.log('start drag');
-      },
-      change: function(e, ui) {
-       $container.masonry('reload');
-      },
-      stop: function(e, ui) {
-        ui.item.addClass('masonry-item');
-        $container.masonry('reload');
-        
-        console.log('stop drag');
-      }
-    });
-    $container.disableSelection();*/
-
-    //FastClick.attach(document.body);
     
     $('body').on('touchmove', function(e) {
         // this is the node the touchmove event fired on
@@ -39,53 +17,22 @@ $(window).load(function () {
     
     $('.start-menu').hide().css('opacity', 1);
     $('.taskbar').sortable({axis: "x"});
-});
 
-$(function () {
-    //$('.start-screen-scroll').jScrollPane();
-});
-
-function resizeStart() {
-    var startWidth = $('.start-screen').outerWidth();
-    var startRound = Math.ceil(startWidth / 128.0) * 128;
-
-    console.log('original: ' + startWidth);
-    console.log('rounded: ' + startRound);
-
-    $('.start-screen').css({
-        'width': startRound
-    });
-}
-
-//$(window).load(resizeStart);
-//$(window).resize(resizeStart);
-
-
-
-$(function () {
+    $('.menu-toggle').each(menuToggleInitiator);
+    
+    
     var zIndex = 1;
 
     var fullHeight = $(window).height() - 48,
         fullWidth = $(window).width();
-
 
     $(window).resize(function () {
         fullHeight = $(window).height() - 48;
         fullWidth = $(window).width();
     });
 
-    $(function () {
-        var initialActive = $('.window:visible').not('.window--minimized').first();
-        var appName = $(initialActive).data('window');
 
-        $(initialActive).addClass('window--active').css({
-            'z-index': zIndex++
-        });
-        $('.taskbar__item[data-window="' + appName + '"]').addClass('taskbar__item--active');
-    });
-
-
-    $('.window').click(function (e) {
+    function windowClickHandler (e) {
         if (!$(this).is('.window--active')) {
             $('.window').removeClass('window--active');
         }
@@ -106,8 +53,9 @@ $(function () {
             $(targetTaskbar).addClass('taskbar__item--active');
 
         }
-    });
-    resizablePlugin_configurations = {
+    };
+    
+    var resizablePlugin_configurations = {
         handles: 'n,ne,e,se,s,sw,w,nw',
         stop: function () {
             var initialHeight = $(this).height(),
@@ -118,15 +66,23 @@ $(function () {
     };
     var draggablePlugin_configurations = {
         handle: '.window__titlebar',
-        stop: function () {
+        stop: function (event, ui) {
+            console.log('Drag stopped.');
             var initialHeight = $(this).height(),
                 initialWidth = $(this).width(),
                 initialTop = $(this).position().top,
                 initialLeft = $(this).position().left;
+            //re-register!
+                var targetWindow = $(this);
+                var thisTitlebar = $('.window__titlebar',targetWindow);
+                targetWindow.click(windowClickHandler);
+                thisTitlebar.click(function(){console.log('Clicked on titlebar.')});
+                targetWindow.click(function(){console.log('Clicked on window.')});
+                $('a', thisTitlebar).click(function(){console.log('Clicked on window controls.')});
         },
         start: function (event, ui) {
+            console.log('Drag started.');
             var mouseX = event.pageX + 'px';
-            console.log(mouseX);
 
             $('.window').removeClass('window--active');
 
@@ -251,15 +207,18 @@ $(function () {
         targetTaskbar.appendTo('.taskbar');
         //re-activate event listeners on those new doms:
         targetTaskbar.click(openApp);
+        targetWindow.click(windowClickHandler);
+        targetWindow.click();
         targetWindow.resizable(resizablePlugin_configurations);
         targetWindow.draggable(draggablePlugin_configurations);
         var thisTitlebar = $('.window__titlebar', targetWindow);
         thisTitlebar.each(initialize_a_titlebar);
         thisTitlebar.mouseup(tiltingHandler);
-        thisTitlebar.click(function(){
-            console.log('clicked')
-        })
-        targetWindow.click();
+        //event listeners for debugging:
+        targetTaskbar.click(function(){console.log('Clicked on taskbar button.')});
+        thisTitlebar.click(function(){console.log('Clicked on titlebar.')});
+        targetWindow.click(function(){console.log('Clicked on window.')});
+        $('a', thisTitlebar).click(function(){console.log('Clicked on window controls.')});
         //TODO
     }
 
@@ -362,7 +321,7 @@ function initialize_a_titlebar() {
                 'top': 0,
                 'left': 0
             });
-        } else if (pos_left < -5) {
+        } else if (pos_left < -$(parentWindow).width()/2) {
             //alert('at left')
             $(parentWindow).addClass('window--maximized')
             initialHeight = $(parentWindow).height();
@@ -376,7 +335,7 @@ function initialize_a_titlebar() {
                 'top': 0,
                 'left': 0
             });
-        } else if (pos_left > fullWidth-5-$(parentWindow).width()) {
+        } else if (pos_left > fullWidth-$(parentWindow).width()/2) {
             //alert('at right')
             $(parentWindow).addClass('window--maximized');
             initialHeight = $(parentWindow).height();
@@ -394,8 +353,18 @@ function initialize_a_titlebar() {
 
     };
     /* //only needed when there are autolaunch apps
+$(function () {
+        var initialActive = $('.window:visible').not('.window--minimized').first();
+        var appName = $(initialActive).data('window');
+
+        $(initialActive).addClass('window--active').css({
+            'z-index': zIndex++
+        });
+        $('.taskbar__item[data-window="' + appName + '"]').addClass('taskbar__item--active');
+    });
+    
     $('.window__titlebar').each(initialize_a_titlebar);
-    $('.window__titlebar').mouseup(titlebarButtonMouseUpEventHandler); */
+   $('.window').click(windowClickHandler); $('.window__titlebar').mouseup(titlebarButtonMouseUpEventHandler); */
 });
 
 
@@ -514,9 +483,7 @@ $(function () {
     $('.time').html(curr_hour + ':' + curr_min + ' ' + a_p);
 });
 
-
-
-$('.menu-toggle').each(function () {
+function menuToggleInitiator () {
     var menuName = $(this).data('menu');
     var menu = $('.menu[data-menu="' + menuName + '"]');
     var pos = $(this).position();
@@ -540,11 +507,9 @@ $('.menu-toggle').each(function () {
         $('.menu').not(menu).hide();
         $(menu).toggle();
     });
-});
+};
 
-
-
-
+//close menu that is not clicked upon upon any click:
 $(document).mouseup(function (e) {
     if ($('.menu').has(e.target).length === 0 && !$('.menu-toggle').is(e.target) && $('.menu-toggle').has(e.target).length === 0) {
         $('.menu').hide();
