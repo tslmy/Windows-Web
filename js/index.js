@@ -375,7 +375,7 @@ function initialize_a_titlebar() {
         });
     };
 
-    function titlebarButtonMouseUpEventHandler (e) {
+    function tiltingHandler (e) {
         var parentWindow = $(this).closest('.window');
         var pos = $(parentWindow).offset().top;
 
@@ -395,11 +395,29 @@ function initialize_a_titlebar() {
                 'left': 0
             });
         }
+        
+        var pos = $(parentWindow).offset().left;
+
+        if (pos < -5) {
+            //alert('at left')
+
+            initialHeight = $(parentWindow).height();
+            initialWidth = $(parentWindow).width();
+            initialTop = $(parentWindow).position().top;
+            initialLeft = $(parentWindow).position().left;
+
+            $(parentWindow).css({
+                'height': fullHeight,
+                'width': fullWidth/2,
+                'top': 0,
+                'left': 0
+            });
+        }
 
     };
-    
+    /* //only needed when there are autolaunch apps
     $('.window__titlebar').each(initialize_a_titlebar);
-    $('.window__titlebar').pointerup(titlebarButtonMouseUpEventHandler);
+    $('.window__titlebar').mouseup(titlebarButtonMouseUpEventHandler); */
 });
 
 
