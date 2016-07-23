@@ -82,6 +82,7 @@ a {
   &.ui-resizable-resizing {
     transition: none;
   }
+        overflow: hidden;
 }
 .window--maximized {
   
@@ -896,6 +897,15 @@ a {
   border: 0;
   width: 100%;
   height: 100%;
+}
+
+.full-iframe {
+  border: none;
+  width: 100%;
+  height: 100%;
+    padding: 0;
+    margin: 0;
+    position: absolute;
 }
 
 .ui-resizable-se {
