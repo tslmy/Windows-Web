@@ -507,7 +507,7 @@ a {
   &:hover {
     background-color: rgba(#78909C, 0.15);
   }
-  > i {
+  > i, input {
     display: inline-block;
     vertical-align: middle;
     margin-top: 6px;
@@ -548,6 +548,18 @@ a {
   &.start--open {
     color: white;
   }
+}
+
+.taskbar__item--cortana {
+    width:150px;
+    input {
+        background: none;
+        font-size:14px;
+        border:none;
+        outline: none;
+        color:#ddd;
+        width:100%;
+    }
 }
 .taskbar__tray {
   color: white;
