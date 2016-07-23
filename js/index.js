@@ -27,7 +27,7 @@ $(window).load(function () {
     $container.disableSelection();*/
 
     //FastClick.attach(document.body);
-    
+    document.ontouchstart = function(e){ e.preventDefault(); } //disable scrolling on mobile webapp mode
     $('.start-menu').hide().css('opacity', 1);
 });
 
