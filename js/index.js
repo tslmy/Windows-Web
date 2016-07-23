@@ -252,6 +252,7 @@ $(function () {
         var thisTitlebar = $('.window__titlebar', targetWindow);
         thisTitlebar.each(initialize_a_titlebar);
         thisTitlebar.mouseup(titlebarButtonMouseUpEventHandler);
+        thisTitlebar.click();
         //TODO
         /*if (targetWindow.is(':visible')) {
             if (targetWindow.hasClass('window--active')) {
