@@ -27,7 +27,22 @@ $(window).load(function () {
     $container.disableSelection();*/
 
     //FastClick.attach(document.body);
-    document.ontouchmove = function(e){ e.preventDefault(); } //disable scrolling on mobile webapp mode
+    
+    $('body').on('touchmove', function(e) {
+        // this is the node the touchmove event fired on
+        target = e.target;
+
+        // we need to find the parent container
+        // we get it like so; assumes div as parent
+        parent = $(e.target).closest('div');
+
+        // check if the parent is a scroll window by class //
+        if ($(parent).hasClass('window__titlebar')){
+            // ignore as we want the scroll to happen
+        } else {
+            e.preventDefault();
+        }
+    });
     $('.start-menu').hide().css('opacity', 1);
 });
 
