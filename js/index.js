@@ -1,10 +1,10 @@
 $(function () {
     var $container = $('.start-screen');
 
-    $container.masonry({
+    /*$container.masonry({
         itemSelector: '.masonry-item',
         columnWidth: 128
-    });
+    });*/
     FastClick.attach(document.body);
     $('body').on('touchmove', function (e) {
         // this is the node the touchmove event fired on
