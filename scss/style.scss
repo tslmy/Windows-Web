@@ -504,6 +504,7 @@ a {
   color: white;
   border: 1px solid transparent;
   transition: all 100ms;
+    float: left;
   &:hover {
     background-color: rgba(#78909C, 0.15);
   }
