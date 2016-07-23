@@ -880,28 +880,29 @@ a {
   height: 100%;
   padding: 0;
   margin: 0;
-  position: absolute; }
+  position: absolute;
+  overflow: hidden; }
 
-/* line 946, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 947, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .ui-resizable-se {
   background-image: url(""); }
 
-/* line 950, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 951, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .menu-toggle {
   position: relative; }
 
-/* line 954, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 955, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .menu-toggle--open {
   background-color: rgba(0, 0, 0, 0.1); }
 
-/* line 958, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 959, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .menu {
   position: absolute;
   z-index: 10000;
   background: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   transition: all 250ms; }
-  /* line 965, /Users/lmy/Projects/Windows Web/scss/style.scss */
+  /* line 966, /Users/lmy/Projects/Windows Web/scss/style.scss */
   .menu > a {
     display: block;
     width: 200px;
@@ -909,11 +910,11 @@ a {
     font-size: 16px;
     color: #455A64;
     transition: all 100ms; }
-    /* line 972, /Users/lmy/Projects/Windows Web/scss/style.scss */
+    /* line 973, /Users/lmy/Projects/Windows Web/scss/style.scss */
     .menu > a:hover {
       background-color: #ECEFF1; }
 
-/* line 980, /Users/lmy/Projects/Windows Web/scss/style.scss */
+/* line 981, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .folders > a {
   display: inline-block;
   padding: 10px;
@@ -924,16 +925,16 @@ a {
   border: 1px solid transparent;
   color: #607D8B;
   cursor: pointer; }
-  /* line 990, /Users/lmy/Projects/Windows Web/scss/style.scss */
+  /* line 991, /Users/lmy/Projects/Windows Web/scss/style.scss */
   .folders > a:hover {
     color: #1976D2;
     border-color: rgba(0, 0, 0, 0.1);
     background-color: rgba(236, 239, 241, 0.5); }
-  /* line 995, /Users/lmy/Projects/Windows Web/scss/style.scss */
+  /* line 996, /Users/lmy/Projects/Windows Web/scss/style.scss */
   .folders > a > i {
     display: block;
     font-size: 32px; }
-  /* line 999, /Users/lmy/Projects/Windows Web/scss/style.scss */
+  /* line 1000, /Users/lmy/Projects/Windows Web/scss/style.scss */
   .folders > a > span {
     display: block; }
 
