@@ -47,7 +47,7 @@
                     <a class="user-info menu-toggle" href="#" data-menu="user">
                         <img class="user-info__img media__img" src="http://i.imgur.com/KkCqvK9.png" alt="User image">
                         <div class="user-info__name media__body">
-                            User Name
+                            Guest
                         </div>
                     </a>
                     <div class="menu" data-menu="user">
@@ -69,19 +69,14 @@
 
 
                 <ul class="start-menu__recent">
-                    <li class="start-menu__explorer">
-                        <a href="#" data-window="explorer">
-                            <i class="fa fa-folder"></i> File Explorer
+                  <li class="start-menu__browser_newWindow">
+                        <a href="#" data-href="https://nextbus.to/" data-appname="Next Bus To" data-icon="fa-bus">
+                            <i class="fa fa-bus"></i> Next Bus To
                         </a>
                     </li>
-                    <li class="start-menu__mail">
-                        <a href="#" data-window="mail">
-                            <i class="fa fa-envelope"></i> Mail
-                        </a>
-                    </li>
-                    <li class="start-menu__notepad">
-                        <a href="#" data-window="notepad">
-                            <i class="fa fa-pencil"></i> Notepad
+                  <li class="start-menu__browser_newWindow">
+                        <a href="#" data-href="https://tslmy.github.io/textpad/" data-appname="Notepad" data-icon="fa-file-text-o">
+                            <i class="fa fa-file-text-o"></i> Notepad
                         </a>
                     </li>
                 </ul>
@@ -97,7 +92,7 @@
                 </form>
             </div>
             <div class="start-screen-scroll">
-                <div class="start-screen">
+                <!--div class="start-screen">
                     <a class="start-screen__tile start-screen__tile--explorer masonry-item" href="#" data-window="explorer">
                         <i class="fa fa-folder"></i>
                         <span>File Explorer</span>
@@ -127,7 +122,7 @@
                     </a>
                     <a class="start-screen__tile masonry-item" href="#">
                     </a>
-                </div>
+                </div-->
             </div>
         </div>
 
@@ -135,12 +130,9 @@
             <a class="taskbar__item taskbar__item--start" href="#" data-window="start">
                 <i class="fa fa-windows"></i>
             </a>
-            <span class="taskbar__item taskbar__item--cortana">
+            <!--span class="taskbar__item taskbar__item--cortana">
                 <input placeholder="Ask me anything"></input>
-            </span>
-            <a class="taskbar__item taskbar__item--browser" href="#" data-window="browser">
-                <i class="fa fa-cube"></i>
-            </a>
+            </span-->
 
             <div class="taskbar__tray">
                 <span class="time">
@@ -148,40 +140,6 @@
             </div>
         </div>
 
-        <div class="window window--browser" data-window="browser" style="width:400px;height:515px;top:10%;left:10%;">
-            <div class="window__titlebar">
-                <div class="window__controls window__controls--left">
-                    <a class="window__icon" href="#"><i class="fa fa-cube"></i></a>
-                    <!--a class="window__menutoggle" href="#"><i class="fa fa-bars"></i></a-->
-                </div>
-                <span class="window__title">Browser</span>
-                <div class="window__controls window__controls--right">
-                    <a class="window__minimize" href="#"><i class="fa fa-minus"></i></a>
-                    <a class="window__maximize" href="#"><i class="fa"></i></a>
-                    <a class="window__close" href="#"><i class="fa fa-close"></i></a>
-                </div>
-            </div>
-
-            <!--ul class="window__menu">
-                <li>
-                    <a href="#">
-                        <i class="menu__icon fa fa-download"></i> Save
-                    </a>
-                </li>
-                <li class="divided">
-                    <a href="#">
-                        <i class="menu__icon fa fa-file"></i> Format
-                    </a>
-                </li>
-            </ul-->
-
-            <div class="window__body">
-                <div class="window__main">
-                    <iframe class="full-iframe" src="https://nextbus.to"></iframe>
-                </div>
-            </div>
-        </div>
-        
     </div>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>

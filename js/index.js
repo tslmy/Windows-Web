@@ -37,7 +37,7 @@ $(window).load(function () {
         }
     });
     $('.start-menu').hide().css('opacity', 1);
-    $('.taskbar').sortable();
+    $('.taskbar').sortable({axis: "x"});
 });
 
 $(function () {
@@ -74,18 +74,6 @@ $(function () {
     });
 
     $(function () {
-        $('.window:visible').each(function () {
-            var appName = $(this).data('window');
-
-            $('.taskbar__item[data-window="' + appName + '"]').addClass('taskbar__item--open');
-        });
-
-        $('.window:hidden').each(function () {
-            $(this).addClass('window--opening');
-        });
-    });
-
-    $(function () {
         var initialActive = $('.window:visible').not('.window--minimized').first();
         var appName = $(initialActive).data('window');
 
@@ -115,8 +103,7 @@ $(function () {
 
         }
     });
-
-    $('.window').resizable({
+    resizablePlugin_configurations = {
         handles: 'n,ne,e,se,s,sw,w,nw',
         stop: function () {
             var initialHeight = $(this).height(),
@@ -124,9 +111,8 @@ $(function () {
                 initialTop = $(this).position().top,
                 initialLeft = $(this).position().left;
         }
-    });
-
-    $('.window').draggable({
+    };
+    var draggablePlugin_configurations = {
         handle: '.window__titlebar',
         stop: function () {
             var initialHeight = $(this).height(),
@@ -161,7 +147,9 @@ $(function () {
             $('.taskbar__item').removeClass('taskbar__item--active');
             $(targetTaskbar).addClass('taskbar__item--active');
         }
-    });
+    };
+    $('.window').resizable(resizablePlugin_configurations);
+    $('.window').draggable(draggablePlugin_configurations);
 
     function openApp(e) {
         var appName = $(this).data('window');
@@ -211,17 +199,107 @@ $(function () {
             $(targetTaskbar).addClass('taskbar__item--active').addClass('taskbar__item--open');
         }
     }
+    var browserWindowCount = 0;
+    function generateDomForNewBrowserWindow(appName, href, icon, browserWindowID) {
+        return `        <div class="window window--browser" data-window="browser`+browserWindowID+`" style="width:400px;height:515px;top:`+browserWindowID*32+`px;left:`+browserWindowID*32+`px;">
+                <div class="window__titlebar">
+                    <div class="window__controls window__controls--left">
+                        <a class="window__icon" href="#"><i class="fa `+icon+`"></i></a>
+                    </div>
+                    <span class="window__title">`+appName+`</span>
+                    <div class="window__controls window__controls--right">
+                        <a class="window__minimize" href="#"><i class="fa fa-minus"></i></a>
+                        <a class="window__maximize" href="#"><i class="fa"></i></a>
+                        <a class="window__close" href="#"><i class="fa fa-close"></i></a>
+                    </div>
+                </div>
+
+                <div class="window__body">
+                    <div class="window__main">
+                        <iframe class="full-iframe" src="`+href+`"></iframe>
+                    </div>
+                </div>
+            </div>`;
+    };
+    function generateDomForNewBrowserTaskbarButton(appName, href, icon, browserWindowID) {
+        return `<a class="taskbar__item taskbar__item--open taskbar__item--browser" href="#" data-window="browser`+browserWindowID+`">
+                <i class="fa `+icon+`"></i>
+            </a>`;
+    };
+                
+    function openAppNewWindow(e) {
+        e.preventDefault();
+        //get usable parameters
+        var appName = $(this).data('appname');
+        var icon = $(this).data('icon');
+        var href = $(this).data('href');
+        browserWindowCount += 1;
+        console.log('Creating window for ', appName, ' that points to ', href, '...');
+        //generate dom
+        WindowDomString = generateDomForNewBrowserWindow(appName, href, icon, browserWindowCount);
+        TaskbarButtonDomString = generateDomForNewBrowserTaskbarButton(appName, href, icon, browserWindowCount);
+        var targetWindow = $(WindowDomString);
+        var targetTaskbar = $(TaskbarButtonDomString);
+        //deactivate, if any, current active window
+        $('.taskbar__item').removeClass('taskbar__item--active');
+        //inject new dom elements:
+        targetWindow.appendTo('.desktop');
+        targetTaskbar.appendTo('.taskbar');
+        //re-activate event listeners on those new doms:
+        targetTaskbar.click(openApp);
+        targetWindow.resizable(resizablePlugin_configurations);
+        targetWindow.draggable(draggablePlugin_configurations);
+        $('.window__titlebar', targetWindow).each(initialize_a_titlebar);
+        //TODO
+        /*if (targetWindow.is(':visible')) {
+            if (targetWindow.hasClass('window--active')) {
+                $(targetWindow).toggleClass('window--minimized');
+
+                if (!targetWindow.hasClass('window--minimized')) {
+                    var initialHeight = $(targetWindow).height(),
+                        initialWidth = $(targetWindow).width(),
+                        initialTop = $(targetWindow).position().top,
+                        initialLeft = $(targetWindow).position().left;
+
+                    $('.window').removeClass('window--active');
+
+                    $(targetWindow).addClass('window--active').css({
+                        'z-index': zIndex++
+                    });
+
+                    $(targetTaskbar).addClass('taskbar__item--active');
+                }
+            } else {
+                $('.window').removeClass('window--active');
+                $(targetWindow).addClass('window--active').removeClass('window--minimized').css({
+                    'z-index': zIndex++
+                });
+
+                $(targetTaskbar).addClass('taskbar__item--active');
+            }
+        } else {
+            $('.window').removeClass('window--active');
+
+            $('.window[data-window="' + appName + '"]').css({
+                'z-index': zIndex++
+            }).addClass('window--active').show();
+
+            setTimeout(function () {
+                $('.window[data-window="' + appName + '"]').removeClass('window--opening');
+            }, 500);
+
+            $(targetTaskbar).addClass('taskbar__item--active').addClass('taskbar__item--open');
+        }*/
+    }
 
     $('.taskbar__item').click(openApp);
-    $('.start-menu__recent li a').click(openApp);
-    $('.start-screen__tile').click(openApp);
+    $('.start-menu__recent li a').click(openAppNewWindow);
+    //$('.start-screen__tile').click(openApp);
 
 
 
 
-
-
-    $('.window__titlebar').each(function () {
+function initialize_a_titlebar() {
         var parentWindow = $(this).closest('.window');
 
         $(this).find('a').click(function (e) {
@@ -291,7 +369,9 @@ $(function () {
                 });
             }
         });
-    });
+    };
+
+    $('.window__titlebar').each(initialize_a_titlebar);
 
     $('.window__titlebar').mouseup(function (e) {
         var parentWindow = $(this).closest('.window');
