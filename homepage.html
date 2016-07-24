@@ -1,50 +1,54 @@
 <!DOCTYPE html>
 <html>
 	<head>
-       <style>
-            body {
-                height:100%;
-                width:100%;
+    <style>
+        body {
+            height: 100%;
+            width: 100%;
+        }
+        
+        * {
+            border: none;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        
+        #dizhi {
+            margin: 0 auto;
+            height: 100%;
+            width: 100%;
+            display: block;
+            font-size: 100px;
+            font-style: italic;
+            word-wrap: break-word;
+            word-break: break-all;
+            resize: none;
+            outline: none;
+        }
+    </style>
+    <script>
+        function onTestChange() {
+            var key = window.event.keyCode;
+            // If the user has pressed enter
+            if (key == 13) {
+                textarea = document.getElementById("dizhi");
+                address = document.getElementById("dizhi").value.replace(/(^\s*)|(\s*$)/g, "");
+                textarea.parentNode.removeChild(textarea);
+                if (address.toLowerCase().substring(0, 4) == "http") {
+                    window.location.assign(address)
+                } else {
+                    window.location.assign("http://" + address)
+                };
+            } else {
+                return true;
             }
-           * {
-                border:none;
-                padding: 0;
-                margin: 0;
-                overflow:hidden;
-               box-sizing:border-box;
-           }
-            #dizhi{
-                margin: 0 auto;
-                height:100%;
-                width:100%;
-                display: block;
-                font-size:100px;
-                font-style: italic;
-                word-wrap: break-word;
-                word-break: break-all;
-                resize: none;
-                outline: none;
-            }
-            
-       </style>
-		<script>
-            function onTestChange() {
-                var key = window.event.keyCode;
-                // If the user has pressed enter
-                if (key == 13) {
-                    textarea = document.getElementById("dizhi");
-                    address = document.getElementById("dizhi").value.replace(/(^\s*)|(\s*$)/g, "");
-                    textarea.parentNode.removeChild( textarea );
-                    if (address.toLowerCase().substring(0,4) == "http") {window.location.assign(address)}
-                    else {window.location.assign("http://"+address)};
-                }
-                else {
-                    return true;
-                }
-            }
-		</script>
-	</head>
-	<body>
-        <textarea id="dizhi" placeholder="URL here..." onkeypress="onTestChange();"></textarea>
-	</body>
+        }
+    </script>
+</head>
+
+<body>
+    <textarea id="dizhi" placeholder="URL here..." onkeypress="onTestChange();"></textarea>
+</body>
 </html>

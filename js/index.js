@@ -154,10 +154,10 @@ $(function () {
     var browserWindowCount = 0;
 
     function generateDomForNewBrowserWindow(appName, href, icon, browserWindowID, width, height, color) {
-        return `        <div class="window window--browser" data-window="browser` + browserWindowID + `" style="width:`+width+`;height:`+height+`;top:` + browserWindowID * 32 + `px;left:` + browserWindowID * 32 + `px;">
+        return `        <div class="window window--browser" data-window="browser` + browserWindowID + `" style="width:` + width + `;height:` + height + `;top:` + browserWindowID * 32 + `px;left:` + browserWindowID * 32 + `px;">
                 <div class="window__titlebar">
                     <div class="window__controls window__controls--left">
-                        <a class="window__icon" href="#" style="background:`+color+`"><i class="fa ` + icon + `"></i></a>
+                        <a class="window__icon" href="#" style="background:` + color + `"><i class="fa ` + icon + `"></i></a>
                     </div>
                     <span class="window__title">` + appName + `</span>
 
