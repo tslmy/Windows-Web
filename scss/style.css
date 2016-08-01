@@ -49,7 +49,7 @@ a {
 
 /* line 55, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .desktop {
-  background-image: url(../background.jpg);
+  background-image: url(../background.png);
   background-size: cover;
   background-position: 50%;
   background-attachment: fixed; }
