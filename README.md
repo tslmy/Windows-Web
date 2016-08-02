@@ -15,10 +15,13 @@ Consider this a GUI-extension of [Consora](https://github.com/tslmy/consora).
 - [x] Change start menu into a list of my favorite web apps
 - [ ] make a Cortana-like quck start bar
       - [ ] make it default focus on load
+- [ ] make program list dynamically load from a json list
 
 
-Work Adapted from:
+
+Work Adapted from
 ------------------
 A [Pen](http://codepen.io/keithpickering/pen/azBdNj) created at CodePen.io.
 
 > Just a little something I'm working on in my spare time.
+
