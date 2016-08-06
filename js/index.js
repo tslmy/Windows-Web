@@ -65,7 +65,7 @@ var apps = {
         "icon": "fa-wifi",
         "width": "720px",
         "height": "570px",
-        "color": "#0E4CC2"
+        "color": "#4285f4"
     },
     "Protein Viewer": {
         "href": "https://arose.github.io/ngl/", 
