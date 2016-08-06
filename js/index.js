@@ -1,4 +1,109 @@
+var apps = {
+    "Internet Explorer": {
+        "href": "homepage.html", 
+        "name": "Internet Explorer",
+        "icon": "fa-internet-explorer",
+        "color": "#1A9AF0",
+        "width": "530px",
+        "height": "400px"
+    },
+    "Calculator": {
+        "href": "https://mozilla.github.io/calculator/app/", 
+        "name": "Calculator",
+        "icon": "fa-calculator",
+        "color": "#f97c17",
+        "width": "420px",
+        "height": "530px"
+    },
+    "Next Bus To": {
+        "href": "https://nextbus.to/", 
+        "name": "Next Bus To",
+        "color": "#1df7b0",
+        "icon": "fa-bus"
+    },
+    "Chatroom": {
+        "href": "https://tlk.io/tslmy", 
+        "name": "Chatroom",
+        "color": "#00aaff",
+        "icon": "fa-cloud"
+    },
+    "Pomodoro Timer": {
+        "href": "http://pomodo.work/", 
+        "name": "Pomodoro Timer",
+        "color": "#e35d5b",
+        "icon": "fa-hourglass-start",
+        "height": "370px",
+        "width": "350px"
+    },
+    "Google Maps": {
+        "href": "https://www.google.com/maps/embed", 
+        "name": "Google Maps",
+        "icon": "fa-map",
+        "width": "460px",
+        "height": "280px"
+    },
+    "Notepad": {
+        "href": "https://tslmy.github.io/textpad/", 
+        "name": "Notepad",
+        "color": "#ccc",
+        "icon": "fa-file-text-o"
+    },
+    "Virtual Machine": {
+        "href": "https://tslmy.github.io/Windows-Web/", 
+        "name": "Virtual Machine",
+        "icon": "fa-desktop",
+        "width": "720px",
+        "height": "570px"
+    },
+    "AirDrop": {
+        "href": "https://snapdrop.net/", 
+        "name": "Snapdrop",
+        "icon": "fa-wifi",
+        "width": "720px",
+        "height": "570px"
+    },
+    "Protein Viewer": {
+        "href": "https://arose.github.io/ngl/", 
+        "name": "Protein Viewer",
+        "icon": "fa-flask",
+        "color": "#1C1F26",
+        "width": "720px",
+        "height": "570px"
+    },
+    "Siri Commands List": {
+        "href": "https://hey-siri.io/", 
+        "name": "Siri Commands List",
+        "icon": "fa-microphone",
+        "width": "720px",
+        "height": "570px"
+    },
+    "Google Now Commands List": {
+        "href": "https://ok-google.io/", 
+        "name": "Google Now Commands",
+        "icon": "fa-microphone",
+        "width": "720px",
+        "height": "570px"
+    }
+};
+
+
 $(function () {
+    
+    //populate start menu:
+    for (var i in apps) {  
+        $('.start-menu__recent').append(`
+                        <li class="start-menu__browser_newWindow">
+                            <a href="#" data-href="`+apps[i].href+`" data-appname="`+apps[i].name+`" data-icon="`+apps[i].icon+`" data-color="`+apps[i].color+`" data-width="`+apps[i].width+`" data-height="`+apps[i].height+`">
+                                <i class="fa `+apps[i].icon+`" style="background:`+apps[i].color+`"></i> `+i+`
+                            </a>
+                        </li>`);
+        $('.start-screen').append(`
+                    <a class="start-screen__tile masonry-item" href="`+apps[i].href+`">
+                        <i class="fa `+apps[i].icon+`"></i>
+                        <span>`+i+`</span>
+                    </a>`);
+    }
+    
     var $container = $('.start-screen');
 
     $container.masonry({
@@ -226,6 +331,8 @@ $(function () {
         });
         //TODO
     }
+    
+
 
     $('.taskbar__item').click(openApp);
     $('.start-menu__recent li a').click(openAppNewWindow);

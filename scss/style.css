@@ -630,7 +630,7 @@ a {
 
 /* line 678, /Users/lmy/Projects/Windows Web/scss/style.scss */
 .start-menu__recent {
-  overflow: hidden;
+  overflow: auto;
   max-height: 65%;
   padding: 0;
   margin: 0;
