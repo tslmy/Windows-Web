@@ -138,7 +138,7 @@ function openAppNewWindow(e) {
     targetWindow.appendTo('.desktop');
     targetTaskbar.appendTo('.taskbar');
     //re-activate event listeners on those new doms:
-    targetTaskbar.click(openApp);
+    targetTaskbar.click(unminimizeApp);
     targetWindow.click(windowClickHandler);
     targetWindow.click();
     targetWindow.resizable(resizablePlugin_configurations);
@@ -395,63 +395,38 @@ function menuToggleInitiator() {
     });
 };
 
-//close menu that is not clicked upon upon any click:
-$(document).mouseup(function (e) {
-    if ($('.menu').has(e.target).length === 0 && !$('.menu-toggle').is(e.target) && $('.menu-toggle').has(e.target).length === 0) {
-        $('.menu').hide();
+function initializeTimer() {
+    var a_p = "";
+    var d = new Date();
+    var curr_hour = d.getHours();
+    if (curr_hour < 12) {
+        a_p = "AM";
+    } else {
+        a_p = "PM";
     }
+    if (curr_hour == 0) {
+        curr_hour = 12;
+    }
+    if (curr_hour > 12) {
+        curr_hour = curr_hour - 12;
+    }
+    var curr_min = d.getMinutes();
+    if (curr_min < 10) {
+        curr_min = '0' + curr_min;
+    }
+    $('.time').html(curr_hour + ':' + curr_min + ' ' + a_p);
+};
+
+
+//initilize global variables:
+var zIndex = 1;
+var browserWindowCount = 0;
+var fullHeight = $(window).height() - 48,
+    fullWidth = $(window).width();
+$(window).resize(function () { //these variable above should be tracked:
+    fullHeight = $(window).height() - 48;
+    fullWidth = $(window).width();
 });
-
-$(function () { //main
-    //populate start menu:
-    for (var i in apps) {  
-        $('.start-menu__recent').append(`
-            <li class="start-menu__browser_newWindow">
-                <a href="#" data-href="`+apps[i].href+`" data-appname="`+apps[i].name+`" data-icon="`+apps[i].icon+`" data-color="`+apps[i].color+`" data-width="`+apps[i].width+`" data-height="`+apps[i].height+`">
-                    <i class="fa `+apps[i].icon+`" style="background:`+apps[i].color+`"></i> `+i+`
-                </a>
-            </li>`);
-        $('.start-screen').append(`
-            <a class="start-screen__tile masonry-item" style="background:`+apps[i].color+`" href="`+apps[i].href+`">
-                <i class="fa `+apps[i].icon+`"></i>
-                <span>`+i+`</span>
-            </a>`);
-    }
-
-    //initialize visual components:
-    $('.start-menu').hide().css('opacity', 1);
-    $('.menu-toggle').each(menuToggleInitiator);
-    $('.side__list ul').each(function () {
-        if ($(this).find('ul').is(':visible')) {
-            $(this).children('li').addClass('side__list--open');
-        }
-    });
-    $('.side__list li').each(function () {
-        if ($(this).children('ul').length) {
-            //$(this).addClass('list__sublist');
-            $(this).children('a').append('<span class="list__toggle"></span>');
-        }
-        if ($(this).children('ul').is(':visible')) {
-            $(this).addClass('side__list--open');
-        }
-    });
-    
-    //initilize global variables:
-    var zIndex = 1;
-    var browserWindowCount = 0;
-    var fullHeight = $(window).height() - 48,
-        fullWidth = $(window).width();
-    $(window).resize(function () { //these variable above should be tracked:
-        fullHeight = $(window).height() - 48;
-        fullWidth = $(window).width();
-    });
-    
-    //initialize plugins:
-    $('.start-screen').masonry({ //tiles plugin
-        itemSelector: '.masonry-item',
-        columnWidth: 128
-    });
-    $('.taskbar').sortable({axis: "x"}); //sortable plugin
     var resizablePlugin_configurations = {
         handles: 'n,ne,e,se,s,sw,w,nw',
         stop: function () {
@@ -498,9 +473,30 @@ $(function () { //main
             $(targetTaskbar).addClass('taskbar__item--active');
         }
     };
-    $('.window').resizable(resizablePlugin_configurations);
-    $('.window').draggable(draggablePlugin_configurations);
-    
+
+//close menu that is not clicked upon upon any click:
+$(document).mouseup(function (e) {
+    if ($('.menu').has(e.target).length === 0 && !$('.menu-toggle').is(e.target) && $('.menu-toggle').has(e.target).length === 0) {
+        $('.menu').hide();
+    }
+});
+
+$(function () { //main
+    //populate start menu:
+    for (var i in apps) {  
+        $('.start-menu__recent').append(`
+            <li class="start-menu__browser_newWindow">
+                <a href="#" data-href="`+apps[i].href+`" data-appname="`+apps[i].name+`" data-icon="`+apps[i].icon+`" data-color="`+apps[i].color+`" data-width="`+apps[i].width+`" data-height="`+apps[i].height+`">
+                    <i class="fa `+apps[i].icon+`" style="background:`+apps[i].color+`"></i> `+i+`
+                </a>
+            </li>`);
+        $('.start-screen').append(`
+            <a class="start-screen__tile masonry-item" style="background:`+apps[i].color+`" href="`+apps[i].href+`" data-href="`+apps[i].href+`" data-appname="`+apps[i].name+`" data-icon="`+apps[i].icon+`" data-color="`+apps[i].color+`" data-width="`+apps[i].width+`" data-height="`+apps[i].height+`">
+                <i class="fa `+apps[i].icon+`"></i>
+                <span>`+i+`</span>
+            </a>`);
+    }
+
     //fix touch device behavior:
     FastClick.attach(document.body); //better responsive speed on touch devices
     $('body').on('touchmove', function (e) { //ignore elastic scroll
@@ -512,9 +508,9 @@ $(function () { //main
         }
     });
 
-    $('.taskbar__item').click(openApp);
+    $('.taskbar__item').click(unminimizeApp);
     $('.start-menu__recent li a').click(openAppNewWindow);
-    $('.start-screen__tile').click(openApp);
+    $('.start-screen__tile').click(openAppNewWindow);
 
     //Bind events:
     $('.all-apps').click(function() {$('.start-screen-scroll').toggle()});
@@ -542,23 +538,31 @@ $(function () { //main
         }
     });
     //timer support:
-    var a_p = "";
-    var d = new Date();
-    var curr_hour = d.getHours();
-    if (curr_hour < 12) {
-        a_p = "AM";
-    } else {
-        a_p = "PM";
-    }
-    if (curr_hour == 0) {
-        curr_hour = 12;
-    }
-    if (curr_hour > 12) {
-        curr_hour = curr_hour - 12;
-    }
-    var curr_min = d.getMinutes();
-    if (curr_min < 10) {
-        curr_min = '0' + curr_min;
-    }
-    $('.time').html(curr_hour + ':' + curr_min + ' ' + a_p);
+    initializeTimer();
+    
+    //initialize plugins:
+    $('.taskbar').sortable({axis: "x"}); //sortable plugin
+    $('.start-screen').masonry({ //tiles plugin
+        itemSelector: '.masonry-item',
+        columnWidth: 128
+    });
+    
+    //initialize visual components:
+    $('.start-menu').hide().css('opacity', 1);
+    $('.menu-toggle').each(menuToggleInitiator);
+    $('.side__list ul').each(function () {
+        if ($(this).find('ul').is(':visible')) {
+            $(this).children('li').addClass('side__list--open');
+        }
+    });
+    $('.side__list li').each(function () {
+        if ($(this).children('ul').length) {
+            //$(this).addClass('list__sublist');
+            $(this).children('a').append('<span class="list__toggle"></span>');
+        }
+        if ($(this).children('ul').is(':visible')) {
+            $(this).addClass('side__list--open');
+        }
+    });
+    
 });
