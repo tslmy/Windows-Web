@@ -42,7 +42,8 @@ var apps = {
         "name": "Google Maps",
         "icon": "fa-map",
         "width": "460px",
-        "height": "280px"
+        "height": "280px",
+        "color": "#A1CA88"
     },
     "Notepad": {
         "href": "https://tslmy.github.io/textpad/", 
@@ -55,14 +56,16 @@ var apps = {
         "name": "Virtual Machine",
         "icon": "fa-desktop",
         "width": "720px",
-        "height": "570px"
+        "height": "570px",
+        "color": "#DBAD71"
     },
     "AirDrop": {
         "href": "https://snapdrop.net/", 
         "name": "Snapdrop",
         "icon": "fa-wifi",
         "width": "720px",
-        "height": "570px"
+        "height": "570px",
+        "color": "#0E4CC2"
     },
     "Protein Viewer": {
         "href": "https://arose.github.io/ngl/", 
@@ -286,7 +289,6 @@ function tiltingHandler(e) {
 };
 
 function unminimizeApp(e) {
-    /*
     var appName = $(this).data('window');
     var targetWindow = $('.window[data-window="' + appName + '"]');
     var targetTaskbar = $('.taskbar__item[data-window="' + appName + '"]');
@@ -332,7 +334,7 @@ function unminimizeApp(e) {
         }, 500);
 
         $(targetTaskbar).addClass('taskbar__item--active').addClass('taskbar__item--open');
-    }*/
+    }
 };
 
 function toggleStart(e) {
