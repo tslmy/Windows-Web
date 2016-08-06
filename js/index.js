@@ -19,7 +19,9 @@ var apps = {
         "href": "https://nextbus.to/", 
         "name": "Next Bus To",
         "color": "#1df7b0",
-        "icon": "fa-bus"
+        "icon": "fa-bus",
+        "width": "357px",
+        "height": "544px"
     },
     "Chatroom": {
         "href": "https://tlk.io/tslmy", 
@@ -77,9 +79,9 @@ var apps = {
         "width": "720px",
         "height": "570px"
     },
-    "Google Now Commands List": {
+    "Google Now Commands": {
         "href": "https://ok-google.io/", 
-        "name": "Google Now Commands",
+        "name": "Google Now Commands List",
         "icon": "fa-microphone",
         "width": "720px",
         "height": "570px"
@@ -98,7 +100,7 @@ $(function () {
                             </a>
                         </li>`);
         $('.start-screen').append(`
-                    <a class="start-screen__tile masonry-item" href="`+apps[i].href+`">
+                    <a class="start-screen__tile masonry-item" style="background:`+apps[i].color+`" href="`+apps[i].href+`">
                         <i class="fa `+apps[i].icon+`"></i>
                         <span>`+i+`</span>
                     </a>`);
@@ -465,18 +467,36 @@ $(function () {
 
     };
     /* //only needed when there are autolaunch apps
-$(function () {
-        var initialActive = $('.window:visible').not('.window--minimized').first();
-        var appName = $(initialActive).data('window');
+    $(function () {
+            var initialActive = $('.window:visible').not('.window--minimized').first();
+            var appName = $(initialActive).data('window');
 
-        $(initialActive).addClass('window--active').css({
-            'z-index': zIndex++
+            $(initialActive).addClass('window--active').css({
+                'z-index': zIndex++
+            });
+            $('.taskbar__item[data-window="' + appName + '"]').addClass('taskbar__item--active');
         });
-        $('.taskbar__item[data-window="' + appName + '"]').addClass('taskbar__item--active');
+
+        $('.window__titlebar').each(initialize_a_titlebar);
+       $('.window').click(windowClickHandler); $('.window__titlebar').mouseup(titlebarButtonMouseUpEventHandler); */
+    //Bind events:
+    $('.all-apps').click(function() {$('.start-screen-scroll').toggle()});
+    $('.taskbar__item--start').click(toggleStart);
+    $('.start-menu__recent li a').click(toggleStart);
+    $('.start-screen__tile').click(toggleStart);
+    // Prevent "open" class on start
+    $('.taskbar__item--start').click(function () {
+        $(this).removeClass('taskbar__item--open taskbar__item--active');
     });
-    
-    $('.window__titlebar').each(initialize_a_titlebar);
-   $('.window').click(windowClickHandler); $('.window__titlebar').mouseup(titlebarButtonMouseUpEventHandler); */
+    // when the startup menu is visible and user clicked outside the menu, it should be closed:
+    $(document).mouseup(function (e) {
+        var start = $('.start-menu');
+        var startToggle = $('.taskbar__item--start');
+        if (start.is(':visible') && !startToggle.is(e.target) && startToggle.has(e.target).length === 0 && !start.is(e.target) && start.has(e.target).length === 0) {
+            toggleStart();
+            //alert('clicked outside start');
+        }
+    });
 });
 
 
@@ -538,31 +558,6 @@ function toggleStart(e) {
     $('.start-menu').fadeToggle(250).toggleClass('start-menu--open');
     $('.taskbar__item--start').toggleClass('start--open');
 }
-$('.taskbar__item--start').click(toggleStart);
-$('.start-menu__recent li a').click(toggleStart);
-$('.start-screen__tile').click(toggleStart);
-
-// Prevent "open" class on start
-$(function () {
-    $('.taskbar__item--start').click(function () {
-        $(this).removeClass('taskbar__item--open taskbar__item--active');
-    });
-});
-
-
-$(document).mouseup(function (e) {
-    var start = $('.start-menu');
-    var startToggle = $('.taskbar__item--start');
-
-
-    if (start.is(':visible') && !startToggle.is(e.target) && startToggle.has(e.target).length === 0 && !start.is(e.target) && start.has(e.target).length === 0) {
-        toggleStart();
-        //alert('clicked outside start');
-    }
-
-
-
-});
 
 
 
