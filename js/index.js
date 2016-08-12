@@ -67,6 +67,22 @@ var apps = {
         "height": "570px",
         "color": "#4285f4"
     },
+    "Pokedex": {
+        "href": "https://www.pokedex.org", 
+        "name": "Pokedex",
+        "icon": "fa-get-pocket",
+        "width": "400px",
+        "height": "620px",
+        "color": "rgb(160,64,160)"
+    },
+    "Net Speed Test": {
+        "href": "https://www.fast.com", 
+        "name": "Fast by Netflix",
+        "icon": "fa-bolt",
+        "width": "400px",
+        "height": "430px",
+        "color": "rgb(226,18,33)"
+    },
     "Protein Viewer": {
         "href": "https://arose.github.io/ngl/", 
         "name": "Protein Viewer",
