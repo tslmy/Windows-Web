@@ -122,7 +122,7 @@ function generateDomForNewBrowserWindow(appName, href, icon, browserWindowID, wi
                     <a class="window__close" href="#"><i class="fa fa-close"></i></a>
                 </div>
             <div class="window__body">
-                <div class="window__main">
+                <div class="window__main" style="background:` + color + `">
                     <iframe class="full-iframe" src="` + href + `"></iframe>
                 </div>
             </div>
