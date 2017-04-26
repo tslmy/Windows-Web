@@ -29,6 +29,12 @@ var apps = {
         "color": "#00aaff",
         "icon": "fa-cloud"
     },
+    "MATLAB Alternative": {
+        "href": "http://octave-online.net", 
+        "name": "Octave",
+        "color": "#ff4b33",
+        "icon": "fa-calculator"
+    },
     "Pomodoro Timer": {
         "href": "http://pomodo.work/", 
         "name": "Pomodoro Timer",
